@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/images/logo/tabopt.png';
+import logo from '../../../assets/images/logo/tabopt.png';
 import { Input} from 'antd';
 import { IoSearch } from "react-icons/io5";
 import { Link } from 'react-router-dom';
@@ -8,6 +8,13 @@ import { FaRegNewspaper } from "react-icons/fa";
 import { IoVideocamOutline, IoGlobeOutline, IoImagesOutline } from "react-icons/io5";
 import { TbBasketSearch } from "react-icons/tb";
 
+const navLinks = [
+    // { name: "All", path: "/results/all", icon: <TbBasketSearch /> },
+    { name: "Web", path: "/results/web", icon: <IoGlobeOutline /> },
+    { name: "Image", path: "/results/images", icon: <IoImagesOutline /> },
+    { name: "Videos", path: "/", icon: <IoVideocamOutline /> },
+    { name: "News", path: "/", icon: <FaRegNewspaper /> },
+  ];
 const ResultSearchBar = () => {
   return (
     <>
@@ -31,19 +38,24 @@ const ResultSearchBar = () => {
                             {/* <button className='bg-[#148ccd] px-4   rounded-full  text-white h-[50px]' >Search</button> */}
                         </div>
                         <div className='md:px-6 px-2 ml-auto sm:order-3 order-2'>
-                            <Link to="/" className="px-4 py-1  w-full hover:bg-blue-300 rounded text-base bg-[#148ccd] text-white flex items-center gap-2  hover:shadow-md" > <FiUser/> Sign in </Link>
+                            <Link to="/sign-in" className="px-3 py-2  w-full hover:bg-blue-300 rounded-full text-base bg-[#148ccd] text-white flex items-center gap-2 font-medium" > <FiUser/> Sign in </Link>
                         </div>
                     </div>
                     
                 </div>
             </div>
             <div className='lg:mx-44 md:mx-36  sm:mx-[128px]'>
-                <div className='flex flex-wrap items-center gap-3'>
-                  <button className=' flex gap-1 items-center sm:text-sm text-xs  pt-[9px] pb-[10px] px-3 relative main-link active '> <TbBasketSearch className='text-base md:block hidden'/> All</button>
-                  <button className=' flex gap-1 items-center sm:text-sm text-xs  pt-[9px] pb-[10px] px-3 relative main-link '> <IoGlobeOutline className='text-base md:block hidden'/> Web</button>
-                  <button className=' flex gap-1 items-center sm:text-sm text-xs  pt-[9px] pb-[10px] px-3 relative main-link '> <IoImagesOutline className='text-base md:block hidden'/> Image</button>
-                  <button className=' flex gap-1 items-center sm:text-sm text-xs  pt-[9px] pb-[10px] px-3 relative main-link '> <IoVideocamOutline className='text-base md:block hidden'/> Videos</button>
-                  <button className=' flex gap-1 items-center sm:text-sm text-xs  pt-[9px] pb-[10px] px-3 relative main-link '> <FaRegNewspaper className='text-base md:block hidden'/> News</button>
+                <div className="flex flex-wrap items-center gap-3">
+                    {navLinks.map((link, index) => (
+                        <Link
+                        key={index}
+                        to={link.path}
+                        className="flex gap-1 items-center sm:text-sm text-xs pt-[9px] pb-[10px] px-3 relative main-link "
+                        >
+                        <span className="text-base md:block hidden">{link.icon}</span>
+                        {link.name}
+                        </Link>
+                    ))}
                 </div>
             </div>
         </div>

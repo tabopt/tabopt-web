@@ -1,14 +1,13 @@
 import React from 'react'
-import ResultSearchBar from './ResultSearchBar'
-import SearchResult from './SearchResult'
-
+import ResultSearchBar from './common/ResultSearchBar'
+import ResultPathPages from './resultPages/ResultPathPages'
 
 const Results = () => {
   return (
     <>
         <div className=' w-full flex flex-col '>
             <ResultSearchBar/>
-            <SearchResult/>
+            <ResultPathPages/>
         </div>
     </>
   )
